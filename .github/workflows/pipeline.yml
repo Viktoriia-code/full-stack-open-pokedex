@@ -28,9 +28,8 @@ jobs:
     needs: simple_deployment_pipeline
     if: ${{ github.event_name == 'push' }}
     steps:
-      - name: Archetect Render Action
-        uses: scaffoldly/archetect-render-action@1.0.10
+      - name: Deploy to Render
+        uses: qbaware/render-redeploy-action@v0
         with:
-          serviceId: ${{ secrets.RENDER_SERVICE_ID }}
-          apiKey: ${{ secrets.RENDER_API_KEY }}
-          multipleDeployment: false #optional, default true
+          render-api-key: ${{ secrets.RENDER_API_KEY }}
+          render-service-id: ${{ secrets.RENDER_SERVICE_ID }}
