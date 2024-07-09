@@ -65,3 +65,10 @@ jobs:
         with:
           render-api-key: ${{ secrets.RENDER_API_KEY }}
           render-service-id: ${{ secrets.RENDER_SERVICE_ID }}
+      - name: Deployment success
+        if: success()
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          severity: info
+          details: Deployment succeeded
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
