@@ -28,12 +28,10 @@ jobs:
   tag_release:
     name: Bump version and push tag
     runs-on: ubuntu-20.04
-    needs: simple_deployment_pipeline
-    if: ${{ github.event_name == 'push' }}
     steps:
       - name: Bump version and push tag
         uses: anothrNick/github-tag-action@1.70.0
-        env:
+        env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   deploy_to_render:
     name: Deploy to Render
